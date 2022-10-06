@@ -130,7 +130,6 @@ header {
 
 .popup-menu {
     margin: 70vh auto;
-    padding: 20px;
     background: #fff;
     border-radius: 5px;
     width: 100%;
@@ -144,26 +143,60 @@ header {
 
  
     h2 {
-      margin-top: 0;
+      margin: 15px;
       color: #333;
       font-family: Tahoma, Arial, sans-serif;
     }
 
     .close {
       position: absolute;
-      top: 20px;
+      top: -21px;
       right: 30px;
       transition: all 200ms;
       font-size: 30px;
       font-weight: bold;
       text-decoration: none;
-      color: #333;    
+      color: #333;
+      background: #fff;
+      border: 1px solid gray;
+      width: 40px;
+      text-align: center;  
     }
     .content {
       max-height: 80%;
       overflow: auto;
     }
 
+    .filters{
+      
+       .filter{  
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 9px;
+        border-top: 1px solid rgb(196, 196, 196);
+       }
+    }
+
+    .filter-buttons{
+      display: flex;
+      justify-content: space-between;
+      background-color: #f4f4f4;
+      width: 100%;
+      
+        button{
+          margin: 5px;
+          width: 100%;
+          border: none;
+          background-color: #fff;
+          border: 1px solid #ededed;
+          &:nth-child(2) {
+            background-color: #0000a3;
+            color: white;
+          }
+        }
+
+     }
 }
 
 @media screen and (max-width: 768px) {
