@@ -1,4 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+.flexCenterall, .shoppingCart, .logo, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,9 +13,6 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
 }
 
@@ -30,17 +33,6 @@ header {
   width: 100%;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-}
-
-.shoppingCart {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
 .searchbar svg,
 .shoppingCart svg,
 .logo svg {
@@ -53,30 +45,42 @@ header {
   font-weight: 600;
 }
 
-.nav-list {
-  display: flex;
-  align-items: center;
+.restFilterButton, .filter-bottom, .filter-bottom-extend {
+  position: relative;
+  margin: 0 30px;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  padding: 8px;
+  text-transform: uppercase;
 }
 
-.nav-item {
-  margin: 0 8px;
+.filter-bottom-extend {
+  position: relative;
+  top: 0;
+  width: 30%;
+  height: 40px;
+  background-color: #0000a3;
+  border-radius: none;
+  margin: 5px;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  padding: 8px;
 }
-
-.nav-link {
-  padding: 10px;
-  color: rgba(238, 238, 238, 0.9333333333);
-  font-size: 0.9rem;
-  font-weight: 500;
-  border-radius: 5px;
+.filter-bottom-extend p {
+  font-size: 1em;
+  color: white;
 }
-
-.nav-link:hover {
-  background-color: #1363DF;
+.filter-bottom-extend svg {
+  fill: #fff;
 }
-
-.header-toggle,
-.header-close {
-  display: none;
+.filter-bottom-extend .filter-notificator {
+  background-color: white;
+  border-radius: 100px;
+  width: 30px;
+  color: #000;
+  text-align: center;
 }
 
 .filter-bottom {
@@ -84,9 +88,9 @@ header {
   top: 60vh;
   width: 30%;
   height: 40px;
-  margin: 0 30px;
-  border-radius: 8px;
   background-color: #0000a3;
+  border-radius: 5px;
+  margin: 8px;
   border: none;
   display: inline-flex;
   justify-content: center;
@@ -138,7 +142,7 @@ header {
 .popup-menu h2 {
   margin: 15px;
   color: #333;
-  font-family: Tahoma, Arial, sans-serif;
+  font-weight: 700;
 }
 .popup-menu .close {
   position: absolute;
@@ -153,6 +157,7 @@ header {
   border: 1px solid gray;
   width: 40px;
   text-align: center;
+  border-radius: 3px;
 }
 .popup-menu .content {
   max-height: 80%;
@@ -172,15 +177,59 @@ header {
   width: 100%;
 }
 .popup-menu .filter-buttons button {
-  margin: 5px;
+  position: relative;
+  top: 0;
   width: 100%;
-  border: none;
+  height: 45px;
   background-color: #fff;
+  border-radius: none;
+  margin: 5px;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  padding: 8px;
   border: 1px solid #ededed;
 }
-.popup-menu .filter-buttons button:nth-child(2) {
-  background-color: #0000a3;
+.popup-menu .filter-buttons button p {
+  font-size: 1em;
   color: white;
+}
+.popup-menu .filter-buttons button svg {
+  fill: #fff;
+}
+.popup-menu .filter-buttons button .filter-notificator {
+  background-color: white;
+  border-radius: 100px;
+  width: 30px;
+  color: #000;
+  text-align: center;
+}
+.popup-menu .filter-buttons button:nth-child(2) {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 45px;
+  background-color: #0000a3;
+  border-radius: none;
+  margin: 5px;
+  border: none;
+  display: inline-flex;
+  justify-content: center;
+  padding: 8px;
+}
+.popup-menu .filter-buttons button:nth-child(2) p {
+  font-size: 1em;
+  color: white;
+}
+.popup-menu .filter-buttons button:nth-child(2) svg {
+  fill: #fff;
+}
+.popup-menu .filter-buttons button:nth-child(2) .filter-notificator {
+  background-color: white;
+  border-radius: 100px;
+  width: 30px;
+  color: #000;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -212,35 +261,7 @@ header {
   .header-close:hover {
     background-color: #372948;
   }
-  .nav {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    background: #47B5FF;
-    color: rgba(238, 238, 238, 0.9333333333);
-    width: 60%;
-    height: 100vh;
-    padding: 24px 0;
-    z-index: 100;
-    transition: 0.5s;
-    border-radius: 0 0 0 50%;
-  }
-  .nav-list {
-    display: flex;
-    flex-direction: column;
-    font-weight: 600;
-  }
-  .nav-item {
-    margin: 2rem 0;
-  }
-  .show {
-    right: 0;
-  }
 }
-* {
-  box-sizing: border-box;
-}
-
 .button {
   display: inline-block;
   margin: 4px 2px;

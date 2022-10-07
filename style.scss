@@ -1,4 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+$filterButtonColor : #0000a3;
+$headerBackground  : #0f0f0f;
+
+
+@mixin filterParagraph(){
+  font-size: 1em;
+  color: white;
+}
+
+@mixin filterNotificator(){
+   background-color: white;
+   border-radius: 100px;
+   width: 30px;
+   color: #000;
+   text-align: center;
+}
+@mixin filterButton($top, $width, $height, $background-color,  $border-radius, $margin){
+  position: relative;
+  top: $top;
+  width: $width;
+  height: $height;
+  background-color: $background-color;
+  border-radius: $border-radius;  
+  
+  margin: $margin;  
+  border: none;  
+  display: inline-flex;
+  justify-content: center;
+  padding: 8px;
+
+  p{
+    @include filterParagraph;
+  }
+
+  svg{
+    fill: #fff;
+  }
+
+  .filter-notificator{
+    @include filterNotificator;
+  }
+}
+
+.flexCenterall{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -6,11 +55,9 @@
 }
 
 body{
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;   
+  @extend .flexCenterall;
+  font-family: 'Poppins', sans-serif;
+  flex-direction: column;   
 }
 
 a {
@@ -23,7 +70,7 @@ ul{
 
 header {
     display: flex;
-    background-color: #0f0f0f;
+    background-color: $headerBackground ;
     justify-content: space-around;
     padding: 1rem 0;
     align-items: center;
@@ -31,13 +78,10 @@ header {
 }
 
 .logo {
-    display: flex;
-    align-items: center;
+  @extend .flexCenterall;
 }
 .shoppingCart{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  @extend .flexCenterall;
 }
 .searchbar svg,
 .shoppingCart svg,
@@ -50,62 +94,22 @@ header {
     font-weight: 600;
 }
 
-.nav-list {
-    display: flex;
-    align-items: center;
-}
-
-.nav-item {
-    margin: 0 8px;
-}
-
-.nav-link {
-    padding: 10px;
-    color: #eeee;
-    font-size: 0.9rem;
-    font-weight: 500;
-    border-radius: 5px;
-}
-
-.nav-link:hover {
-    background-color: #1363DF;
-}
-
-.header-toggle,
-.header-close {
-    display: none;
-}
-
-.filter-bottom{
-  position: relative;
-  top: 60vh;
-  width: 30%;
-  height: 40px;
-  margin: 0 30px;
-  border-radius: 8px;
-  background-color: #0000a3;
-  border: none;
-  
+.restFilterButton{
+  position: relative; 
+  margin: 0 30px; 
+  border: none;  
   display: inline-flex;
   justify-content: center;
   padding: 8px;
-
-  p{
-    font-size: 1em;
-    color: white;
-  }
-
-  svg{
-    fill: #fff;
-  }
-
-  .filter-notificator{
-    background-color: white;
-    border-radius: 100px;
-    width: 30px;
-    color: #000;
-    text-align: center;
-  }
+  text-transform: uppercase;
+}
+.filter-bottom-extend{
+  @include filterButton(0,30%, 40px, $filterButtonColor, none, 5px);
+  @extend .restFilterButton;
+}
+.filter-bottom{
+  @include filterButton(60vh,30%, 40px, $filterButtonColor, 5px, 8px);
+  @extend .restFilterButton;
 }
 
 .overlay {
@@ -120,6 +124,7 @@ header {
  
   transition: 0.3s ease-out;
   z-index: 3;
+
   &:target{
     visibility: visible;
     opacity: 1;
@@ -144,8 +149,8 @@ header {
  
     h2 {
       margin: 15px;
-      color: #333;
-      font-family: Tahoma, Arial, sans-serif;
+      color: #333; 
+      font-weight: 700;
     }
 
     .close {
@@ -161,7 +166,9 @@ header {
       border: 1px solid gray;
       width: 40px;
       text-align: center;  
+      border-radius: 3px;
     }
+
     .content {
       max-height: 80%;
       overflow: auto;
@@ -170,11 +177,11 @@ header {
     .filters{
       
        .filter{  
-        display: flex;
-        justify-content: space-between;
-        width: 100%;
-        padding: 9px;
-        border-top: 1px solid rgb(196, 196, 196);
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          padding: 9px;
+          border-top: 1px solid rgb(196, 196, 196);
        }
     }
 
@@ -183,16 +190,14 @@ header {
       justify-content: space-between;
       background-color: #f4f4f4;
       width: 100%;
+
       
         button{
-          margin: 5px;
-          width: 100%;
-          border: none;
-          background-color: #fff;
-          border: 1px solid #ededed;
+          @include filterButton(0, 100%, 45px, #fff, none, 5px);
+          border: 1px solid #ededed;  
+
           &:nth-child(2) {
-            background-color: #0000a3;
-            color: white;
+            @include filterButton(0, 100%, 45px, $filterButtonColor, none, 5px);
           }
         }
 
@@ -224,45 +229,15 @@ header {
         font-size: 24px;
         border-radius: 50px;
         cursor: pointer;
-    }
-    .header-close:hover {
-        background-color:  #372948;
-    }
-    .nav {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        background: #47B5FF;
-        
-        color: #eeee;
-        width: 60%;
-        height: 100vh;
-        padding: 24px 0;
-        z-index: 100;
-        transition: 0.5s;
-        border-radius: 0 0 0 50%;
-        
-    }
 
-    .nav-list {
-        display: flex;
-        flex-direction: column;
-        font-weight: 600;
-    }
-    .nav-item {
-        margin: 2rem 0;
-    }
-    .show {
-        right: 0;
-    }
+        &:hover{
+          background-color:  #372948;
+        }   
+    }   
 }
-  * {
-    box-sizing: border-box;
-  }
- 
- 
 
-  //searchbar
+ 
+   //searchbar
 .button {
 	display: inline-block;
 	margin: 4px 2px;
