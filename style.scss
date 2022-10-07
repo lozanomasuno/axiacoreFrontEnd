@@ -15,6 +15,7 @@ $headerBackground  : #0f0f0f;
    color: #000;
    text-align: center;
 }
+
 @mixin filterButton($top, $width, $height, $background-color,  $border-radius, $margin){
   position: relative;
   top: $top;
@@ -28,6 +29,7 @@ $headerBackground  : #0f0f0f;
   display: inline-flex;
   justify-content: center;
   padding: 8px;
+  text-transform: uppercase;
 
   p{
     @include filterParagraph;
@@ -175,13 +177,17 @@ header {
     }
 
     .filters{
-      
+
+      :active{
+        background-color:  rgb(196, 196, 196);
+      }
        .filter{  
           display: flex;
           justify-content: space-between;
           width: 100%;
           padding: 9px;
           border-top: 1px solid rgb(196, 196, 196);
+          
        }
     }
 
