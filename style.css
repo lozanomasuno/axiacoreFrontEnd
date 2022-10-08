@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
-.flexCenterall, .shoppingCart, .logo, body {
+.flexCenterall, .products-container .product-card .agregar, .products-container .product-card, .shoppingCart, .logo, body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,7 +46,6 @@ header {
 }
 
 .restFilterButton, .filter-bottom, .filter-bottom-extend {
-  position: relative;
   margin: 0 30px;
   border: none;
   display: inline-flex;
@@ -85,8 +84,8 @@ header {
 }
 
 .filter-bottom {
-  position: relative;
-  top: 60vh;
+  position: fixed;
+  top: 90vh;
   width: 30%;
   height: 40px;
   background-color: #0000a3;
@@ -239,7 +238,25 @@ header {
   text-align: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
+  .products-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .products-container .product-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .products-container .product-card img {
+    width: 20px;
+  }
+  .products-container .product-card p {
+    font-size: 12px;
+    padding: 5px 0;
+  }
+  .products-container .product-card p:first-child {
+    font-weight: bold;
+  }
   header {
     height: 48px;
     justify-content: space-between;
@@ -372,4 +389,42 @@ header {
 
 .expandTop {
   top: 50px;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.products-container .product-card {
+  border: 1px solid #f4f4f4;
+  margin: 5%;
+  flex-direction: column;
+  border-radius: 5px;
+  text-align: left;
+}
+.products-container .product-card img {
+  width: 110px;
+  margin: 5%;
+  height: 110px;
+}
+.products-container .product-card p {
+  font-size: 12px;
+  margin: 5%;
+  padding: 4%;
+  text-align: left;
+  width: 100%;
+}
+.products-container .product-card p:nth-child(2n) {
+  font-weight: 600;
+  font-size: 1em;
+}
+.products-container .product-card p:nth-child(4) {
+  display: none;
+}
+.products-container .product-card .agregar {
+  width: 100%;
+  height: 35px;
+  background-color: #f4f4f4;
+  color: #0000a3;
+  font-weight: bold;
 }/*# sourceMappingURL=style.css.map */

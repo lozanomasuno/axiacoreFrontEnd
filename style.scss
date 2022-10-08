@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 $filterButtonColor : #0000a3;
 $headerBackground  : #0f0f0f;
+$lineGray          :  #f4f4f4;
 
 
 @mixin filterParagraph(){
@@ -16,13 +17,13 @@ $headerBackground  : #0f0f0f;
    text-align: center;
 }
 
-@mixin filterButton($top, $width, $height, $background-color,  $border-radius, $margin){
-  position: relative;
+@mixin filterButton($position,$top, $width, $height, $background-color,  $border-radius, $margin){
+  position: $position;
   top: $top;
   width: $width;
   height: $height;
   background-color: $background-color;
-  border-radius: $border-radius;  
+  border-radius: $border-radius; 
   
   margin: $margin;  
   border: none;  
@@ -39,7 +40,7 @@ $headerBackground  : #0f0f0f;
     fill: #fff;
   }
 
-  .filter-notificator{
+  .filter-notificator{    
     @include filterNotificator;
   }
 }
@@ -97,7 +98,7 @@ header {
 }
 
 .restFilterButton{
-  position: relative; 
+  
   margin: 0 30px; 
   border: none;  
   display: inline-flex;
@@ -106,11 +107,11 @@ header {
   text-transform: uppercase;
 }
 .filter-bottom-extend{
-  @include filterButton(0,30%, 40px, $filterButtonColor, none, 5px);
+  @include filterButton(relative,0,30%, 40px, $filterButtonColor, none, 5px);
   @extend .restFilterButton;
 }
 .filter-bottom{
-  @include filterButton(60vh,30%, 40px, $filterButtonColor, 5px, 8px);
+  @include filterButton(fixed,90vh,30%, 40px, $filterButtonColor, 5px, 8px);
   @extend .restFilterButton;
 }
 
@@ -199,47 +200,73 @@ header {
 
       
         button{
-          @include filterButton(0, 100%, 45px, #fff, none, 5px);
+          @include filterButton(relative,0, 100%, 45px, #fff, none, 5px);
           border: 1px solid #ededed;  
 
           &:nth-child(2) {
-            @include filterButton(0, 100%, 45px, $filterButtonColor, none, 5px);
+            @include filterButton(relative,0, 100%, 45px, $filterButtonColor, none, 5px);
           }
         }
 
      }
 }
 
-@media screen and (max-width: 768px) {
-    header {
-        height: 48px;
-        justify-content: space-between;
-        padding: 0 28px;
-    }
-    .logo a{
-        font-size: 0.9rem;
-    }
-    .logo img {
-        width: 30px;
-    }
-    .header-toggle { 
-        display: inline;
-        color: #eeee;
-        font-size: 24px;
-        cursor: pointer;
-    }
-    .header-close {
-        position: absolute;
-        right: 24px;
-        display: block;
-        font-size: 24px;
-        border-radius: 50px;
-        cursor: pointer;
 
-        &:hover{
-          background-color:  #372948;
-        }   
-    }   
+@media screen and (min-width: 768px) {
+  
+  .products-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    .product-card{
+      display: flex;
+      flex-direction: column;
+  
+      img {
+        width: 20px;
+      }
+  
+      p{
+        font-size: 12px;
+        padding: 5px 0;
+
+        &:first-child{
+          font-weight: bold;
+        }
+  
+      }
+  
+    }
+  }  
+  header {
+      height: 48px;
+      justify-content: space-between;
+      padding: 0 28px;
+  }
+  .logo a{
+      font-size: 0.9rem;
+  }
+  .logo img {
+      width: 30px;
+  }
+  .header-toggle { 
+      display: inline;
+      color: #eeee;
+      font-size: 24px;
+      cursor: pointer;
+  }
+  .header-close {
+      position: absolute;
+      right: 24px;
+      display: block;
+      font-size: 24px;
+      border-radius: 50px;
+      cursor: pointer;
+
+      &:hover{
+        background-color:  #372948;
+      }   
+  }   
 }
 
  
@@ -350,4 +377,53 @@ header {
 
 .expandTop {
   top: 50px;
+}
+
+.products-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+
+  .product-card{
+    
+    @extend .flexCenterall;
+
+    border: 1px solid $lineGray;
+    margin: 5%;
+    flex-direction: column;
+    border-radius: 5px;
+    text-align: left;  
+
+    img {
+      width: 110px;
+      margin: 5%;
+      height: 110px;
+    }
+    
+    p{     
+      font-size: 12px;
+      margin: 5%;
+      padding: 4%;
+      text-align: left;     
+      width: 100%;
+
+      &:nth-child(2n){
+        font-weight: 600;
+        font-size: 1em;        
+      }   
+      &:nth-child(4){
+        display: none;   
+      }   
+    }
+
+    .agregar{
+      @extend .flexCenterall;
+      width: 100%;
+      height: 35px;
+      background-color: $lineGray;
+      color: $filterButtonColor;
+      font-weight: bold;
+    }
+
+  }
 }

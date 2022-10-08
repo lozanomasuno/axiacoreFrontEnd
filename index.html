@@ -8,6 +8,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 </head>
 <body>
 
@@ -41,15 +42,26 @@
         <p>Cervezas</p>
     </div>
     <!--Aquí van los products-->  
+    
 
-        <a class="filter-bottom"  href="#popup1">
+    <div class="products-container" id="productGrid">            
+
+    </div>
+
+    <div id="contentProducts"></div>
+    <script id="product-template" type="text/x-handlebars-template">
+              {{#each productList}}                   
+                    <p>{{name}}</p>
+                    <p>{{value}}</p>
+                {{/each}}        
+    </script>
+
+    <a class="filter-bottom"  href="#popup1">
             <p>filtrar</p>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M5.10882 4.83059C4.93001 4.60261 4.9764 4.27779 5.21243 4.10508C5.30561 4.0369 5.41931 4 5.53621 4H19.4638C19.7599 4 20 4.23186 20 4.51787C20 4.63077 19.9618 4.74059 19.8912 4.83059L13.8405 12.5448V18.4821C13.8405 18.5843 13.8091 18.6843 13.7504 18.7693C13.5861 19.0073 13.2533 19.0716 13.0069 18.913L11.3983 17.8772C11.2492 17.7812 11.1596 17.6195 11.1596 17.4463V12.5448L5.10882 4.83059Z" fill="white"/>
             </svg>
-            <label class="filter-notificator" id="filterNotification-main">
-                    
-            </label>                
+            <label class="filter-notificator" id="filterNotification-main"></label>                
         </a>     
     </button>
 
@@ -92,9 +104,6 @@
           </div>
         </div>
      </div>
-
-   
-   
-    <script src="main.js"></script>
+     <script src="main.js"></script>     
 </body>
 </html>
