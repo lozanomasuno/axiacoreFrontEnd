@@ -26,10 +26,6 @@ window.onload = () => {
   loadProductsdata();
 };
 
-let setfilterByDefault = ( filterDefault )=>{
-    localStorage.setItem = filterDefault;
-}
-
 let loadProductsdata = () => {
   fetch("./assets/products.json")
     .then((res) => {
@@ -85,7 +81,7 @@ let howManycheckboxEnabled = () => {
 
 let enableFilterButton = () => {
    htmlgridproduct = ''
-   setfilterByDefault("setItemDefault", checksenabled);
+   
   if (checksenabled > 0) {
     clearFilters.addEventListener("click", clearCheckBox);
     clearFilters.classList.remove("disabled");
@@ -113,21 +109,22 @@ let loadHandlebarsTemplate = (productList) => {
 
 let rubiaitem = (defaultFilter) => {
   defaultFilter = "id=1";
-  itemTofind = "ale";
+   return itemTofind;
 };
 
 cbxrubia.addEventListener("change", rubiaitem);
 
 let morenaItem = (defaultFilter) => {
   defaultFilter = "id=2";
-  itemTofind = "milk";
+  return itemTofind;
+
 };
 
 cbxmorena.addEventListener("change", morenaItem);
 
 let rojaItem = (defaultFilter) => {
   defaultFilter = "id=3";
-  itemTofind = "topa";
+  return defaultFilter
 };
 
 cbxroja.addEventListener("change", rojaItem);
@@ -135,8 +132,6 @@ cbxroja.addEventListener("change", rojaItem);
 let applyAllFilters = () => {
   htmlgridproduct = "";
   let description;
-    
-  console.log(itemTofind);
 
   productList.forEach((product) => {
     description = product.name.toLowerCase();
