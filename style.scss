@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
 $filterButtonColor : #0000a3;
 $headerBackground  : #0f0f0f;
 $lineGray          :  #f4f4f4;
-
 
 @mixin filterParagraph(){
   font-size: 1em;
@@ -11,21 +11,21 @@ $lineGray          :  #f4f4f4;
 
 @mixin filterNotificator(){
    background-color: white;
-   border-radius: 100px;
-   width: 30px;
+   border-radius: 16px;
+   width: 39px;
    color: #000;
    text-align: center;
 }
 
-@mixin filterButton($position,$top, $width, $height, $background-color,  $border-radius, $margin){
+@mixin filterButton($position : "relative",$top, $width, $height, $background-color,  $border-radius, $margin){
   position: $position;
   top: $top;
   width: $width;
   height: $height;
   background-color: $background-color;
-  border-radius: $border-radius; 
-  
+  border-radius: $border-radius;   
   margin: $margin;  
+
   border: none;  
   display: inline-flex;
   justify-content: center;
@@ -43,12 +43,6 @@ $lineGray          :  #f4f4f4;
   .filter-notificator{    
     @include filterNotificator;
   }
-}
-
-.flexCenterall{
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 *{
@@ -79,7 +73,11 @@ header {
     align-items: center;
     width: 100%;
 }
-
+.flexCenterall{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .logo {
   @extend .flexCenterall;
 }
@@ -97,8 +95,10 @@ header {
     font-weight: 600;
 }
 
-.restFilterButton{
-  
+.disabled{
+  color: $lineGray !important;
+}
+.restFilterButton{  
   margin: 0 30px; 
   border: none;  
   display: inline-flex;
@@ -131,10 +131,12 @@ header {
   &:target{
     visibility: visible;
     opacity: 1;
-    top:0px;
+    top:0px;    
+    position: fixed;
   }
 
 }
+
 
 .popup-menu {
     margin: 70vh auto;
@@ -179,9 +181,7 @@ header {
 
     .filters{
 
-      :active{
-        background-color:  rgb(196, 196, 196);
-      }
+      
        .filter{  
           display: flex;
           justify-content: space-between;
@@ -199,78 +199,19 @@ header {
       width: 100%;
 
       
-        button{
-          @include filterButton(relative,0, 100%, 45px, #fff, none, 5px);
-          border: 1px solid #ededed;  
+        a{
+          @include filterButton(relative,0, 100%, 45px, #fff, unset, 5px);
+          border: 1px solid #ededed; 
+          color: #000;
 
           &:nth-child(2) {
-            @include filterButton(relative,0, 100%, 45px, $filterButtonColor, none, 5px);
+            @include filterButton(relative,0, 100%, 45px, $filterButtonColor, unset, 5px);
           }
         }
 
      }
 }
 
-
-@media screen and (min-width: 768px) {
-  
-  .products-container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    .product-card{
-      display: flex;
-      flex-direction: column;
-  
-      img {
-        width: 20px;
-      }
-  
-      p{
-        font-size: 12px;
-        padding: 5px 0;
-
-        &:first-child{
-          font-weight: bold;
-        }
-  
-      }
-  
-    }
-  }  
-  header {
-      height: 48px;
-      justify-content: space-between;
-      padding: 0 28px;
-  }
-  .logo a{
-      font-size: 0.9rem;
-  }
-  .logo img {
-      width: 30px;
-  }
-  .header-toggle { 
-      display: inline;
-      color: #eeee;
-      font-size: 24px;
-      cursor: pointer;
-  }
-  .header-close {
-      position: absolute;
-      right: 24px;
-      display: block;
-      font-size: 24px;
-      border-radius: 50px;
-      cursor: pointer;
-
-      &:hover{
-        background-color:  #372948;
-      }   
-  }   
-}
-
- 
-   //searchbar
 .button {
 	display: inline-block;
 	margin: 4px 2px;
@@ -292,16 +233,17 @@ header {
 
   cursor: pointer;
   transition: all 0.3s;
+  :hover {
+    transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+  }
+
 }
 
-.button:hover {
-	transition-duration: 0.4s;
-	-moz-transition-duration: 0.4s;
-	-webkit-transition-duration: 0.4s;
-	-o-transition-duration: 0.4s;
-	background-color: white;
-	color: black;
-}
 
 .search-container {
 	position: relative;
@@ -333,17 +275,10 @@ header {
 .title-category {
   p{
     font-size: 2rem;
-    padding: 4vw 0;
+    padding: 3vw 0 2vw;
    }
 }
-.search:focus + .searchbutton {
-	transition-duration: 0.4s;
-	-moz-transition-duration: 0.4s;
-	-webkit-transition-duration: 0.4s;
-	-o-transition-duration: 0.4s;
-	background-color: white;
-	color: black;
-}
+
 
 .search {
 	position: absolute;
@@ -359,20 +294,29 @@ header {
 	-moz-transition-duration: 0.4s;
 	-webkit-transition-duration: 0.4s;
 	-o-transition-duration: 0.4s;
-}
 
-.search:focus {
-	width: 363px; /* Bar width+1px */
-	padding: 0 16px 0 0;
+  &:focus {
+    width: 363px; /* Bar width+1px */
+    padding: 0 16px 0 0;
+  }
+
+  &:focus + .searchbutton {
+    transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    background-color: white;
+    color: black;
+  }
+
 }
 
 .expandright {
 	left: auto;
 	right: 40px; /* Button width-1px */
-}
-
-.expandright:focus {
-	padding: 0 0 0 16px;
+   &:focus {
+    padding: 0 0 0 16px;
+  }
 }
 
 .expandTop {
@@ -381,13 +325,11 @@ header {
 
 .products-container{
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
 
 
-  .product-card{
-    
+  .product-card{    
     @extend .flexCenterall;
-
     border: 1px solid $lineGray;
     margin: 5%;
     flex-direction: column;
@@ -396,34 +338,89 @@ header {
 
     img {
       width: 110px;
-      margin: 5%;
-      height: 110px;
+      margin: 19%;
     }
     
     p{     
-      font-size: 12px;
+      font-size: 1em;
       margin: 5%;
-      padding: 4%;
+      padding: 0 5%;
       text-align: left;     
       width: 100%;
 
       &:nth-child(2n){
         font-weight: 600;
-        font-size: 1em;        
-      }   
-      &:nth-child(4){
-        display: none;   
-      }   
+        font-size: 1.5em;        
+      }     
     }
 
     .agregar{
       @extend .flexCenterall;
       width: 100%;
-      height: 35px;
+      height: 57px;
       background-color: $lineGray;
       color: $filterButtonColor;
       font-weight: bold;
     }
 
   }
+}
+
+@media only screen and (min-width: 0px) and (max-width: 768px) {
+  
+  .products-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important; 
+    .product-card{
+      display: flex;
+      flex-direction: column;  
+      img {
+        width: 180px;
+      }
+  
+      p{
+        font-size: 12px;
+        padding: 0 10%;
+
+        &:first-child{
+          font-weight: bold;
+        }
+  
+      }
+  
+    }
+  }  
+  header {
+      height: 48px;
+      justify-content: space-between;
+      padding: 0 28px;
+  }
+  .logo {
+    a{
+      font-size: 0.9rem;
+     }
+    
+     img {
+        width: 30px;
+    }
+  }
+ 
+  .header-toggle { 
+      display: inline;
+      color: #eeee;
+      font-size: 24px;
+      cursor: pointer;
+  }
+  .header-close {
+      position: absolute;
+      right: 24px;
+      display: block;
+      font-size: 24px;
+      border-radius: 50px;
+      cursor: pointer;
+
+      &:hover{
+        background-color:  #372948;
+      }   
+  }   
 }
