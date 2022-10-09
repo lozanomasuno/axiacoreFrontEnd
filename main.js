@@ -26,6 +26,10 @@ window.onload = () => {
   loadProductsdata();
 };
 
+let setfilterByDefault = ( filterDefault )=>{
+    localStorage.setItem = filterDefault;
+}
+
 let loadProductsdata = () => {
   fetch("./assets/products.json")
     .then((res) => {
@@ -109,22 +113,21 @@ let loadHandlebarsTemplate = (productList) => {
 
 let rubiaitem = (defaultFilter) => {
   defaultFilter = "id=1";
-   return itemTofind;
+  itemTofind = "ale";
 };
 
 cbxrubia.addEventListener("change", rubiaitem);
 
 let morenaItem = (defaultFilter) => {
   defaultFilter = "id=2";
-  return itemTofind;
-
+  itemTofind = "milk";
 };
 
 cbxmorena.addEventListener("change", morenaItem);
 
 let rojaItem = (defaultFilter) => {
   defaultFilter = "id=3";
-  return defaultFilter
+  itemTofind = "topa";
 };
 
 cbxroja.addEventListener("change", rojaItem);
@@ -132,6 +135,8 @@ cbxroja.addEventListener("change", rojaItem);
 let applyAllFilters = () => {
   htmlgridproduct = "";
   let description;
+    
+  console.log(itemTofind);
 
   productList.forEach((product) => {
     description = product.name.toLowerCase();
