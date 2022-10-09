@@ -205,16 +205,14 @@ header {
       overflow: auto;
     }
 
-    .filters{
-
-      
+    .filters{      
        .filter{  
           display: flex;
           justify-content: space-between;
           width: 100%;
           padding: 9px;
           border-top: 1px solid rgb(196, 196, 196);
-          
+          cursor: pointer;
        }
     }
 
@@ -223,11 +221,11 @@ header {
       justify-content: space-between;
       background-color: #f4f4f4;
       width: 100%;     
-        a{
-          @include filterButton(relative,0, 100%, 45px, #fff, unset, 5px);
-          border: 1px solid #ededed; 
-          color: #000;
-
+          a{
+            @include filterButton(relative,0, 100%, 45px, #fff, unset, 5px);
+            border: 1px solid #ededed; 
+            color: #000;
+            cursor: pointer;
           &:nth-child(2) {
             @include filterButton(relative,0, 100%, 45px, $filterButtonColor, unset, 5px);
           }

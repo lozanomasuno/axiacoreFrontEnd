@@ -198,6 +198,7 @@ header {
   width: 100%;
   padding: 9px;
   border-top: 1px solid rgb(196, 196, 196);
+  cursor: pointer;
 }
 .popup-menu .filter-buttons {
   display: flex;
@@ -220,6 +221,7 @@ header {
   text-transform: uppercase;
   border: 1px solid #ededed;
   color: #000;
+  cursor: pointer;
 }
 .popup-menu .filter-buttons a p {
   font-size: 1em;
