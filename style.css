@@ -27,13 +27,36 @@ header {
   width: 100%;
 }
 
-.flexCenterall, .products-container .product-card .agregar, .products-container .product-card, .shoppingCart, .logo, body {
+.flexCenterall, .products-container .product-card .agregar, .products-container .product-card, .shoppingCart .notification-badge, .shoppingCart, .logo, body {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.searchbar svg,
+.shoppingCart .search-container {
+  position: relative;
+  display: inline-block;
+  margin: 1px 1px;
+  height: 48px;
+  width: 48px;
+  vertical-align: bottom;
+}
+.shoppingCart .notification-badge {
+  position: absolute;
+  background-color: #0000a3;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  font-size: 11px;
+  color: #fff;
+  top: 21px;
+  right: 444px;
+}
+.shoppingCart .searchbar svg {
+  display: inline;
+  fill: #fff;
+}
+
 .shoppingCart svg,
 .logo svg {
   display: inline;
@@ -270,15 +293,6 @@ header {
   color: black;
 }
 
-.search-container {
-  position: relative;
-  display: inline-block;
-  margin: 1px 1px;
-  height: 48px;
-  width: 48px;
-  vertical-align: bottom;
-}
-
 .mglass {
   display: inline-block;
   pointer-events: none;
@@ -377,6 +391,11 @@ header {
 }
 
 @media only screen and (min-width: 0px) and (max-width: 768px) {
+  .shoppingCart .notification-badge {
+    position: absolute;
+    top: 9px;
+    right: 20px;
+  }
   .products-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr) !important;

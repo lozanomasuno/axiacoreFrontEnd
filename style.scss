@@ -83,12 +83,39 @@ header {
 }
 .shoppingCart{
   @extend .flexCenterall;
-}
-.searchbar svg,
-.shoppingCart svg,
-.logo svg {
+
+  .search-container {
+    position: relative;
+    display: inline-block;
+    margin: 1px 1px;
+    height: 48px;
+    width: 48px;
+    vertical-align: bottom;
+  }
+
+  .notification-badge{  
+    @extend .flexCenterall;
+    position: absolute;
+    background-color: $filterButtonColor;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    font-size: 11px;
+    color: #fff;
+    top: 21px;
+    right: 444px;
+  }
+  .searchbar svg{
     display: inline;
     fill: #fff;
+  }
+}
+
+
+.shoppingCart svg,
+.logo svg {
+  display: inline;
+  fill: #fff;
 }
 .headerlogo {
     color: #eeee;
@@ -136,7 +163,6 @@ header {
   }
 
 }
-
 
 .popup-menu {
     margin: 70vh auto;
@@ -196,9 +222,7 @@ header {
       display: flex;
       justify-content: space-between;
       background-color: #f4f4f4;
-      width: 100%;
-
-      
+      width: 100%;     
         a{
           @include filterButton(relative,0, 100%, 45px, #fff, unset, 5px);
           border: 1px solid #ededed; 
@@ -242,16 +266,6 @@ header {
     color: black;
   }
 
-}
-
-
-.search-container {
-	position: relative;
-	display: inline-block;
-	margin: 1px 1px;
-	height: 48px;
-	width: 48px;
-	vertical-align: bottom;
 }
 
 .mglass {
@@ -367,6 +381,17 @@ header {
 }
 
 @media only screen and (min-width: 0px) and (max-width: 768px) {
+
+  .shoppingCart{
+   
+    .notification-badge{  
+      @extend .flexCenterall;
+      position: absolute;   
+      top: 9px;
+      right: 20px;
+    }
+    
+  }
   
   .products-container{
     display: grid;
