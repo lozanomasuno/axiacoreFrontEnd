@@ -15,7 +15,10 @@
     <header>
         <nav>
             <div class="logo">
-                <ion-icon name="menu-outline" class="header-toggle" id="toggle-menu"></ion-icon>
+                <svg width="24" height="24" viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3 18.25H21V15.75H3V18.25ZM3 13.25H21V10.75H3V13.25ZM3 5.75V8.25H21V5.75H3Z" fill="white"/>
+                </svg>
+                    
                 <svg width="30" height="30" viewBox="0 0 43 30"  xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M27.7421 15.2428C27.7932 15.1739 27.826 15.0904 27.826 14.9998C27.826 14.9091 27.7932 14.8256 27.7385 14.7603C27.7323 14.7541 27.7265 14.748 27.7208 14.7419C27.7099 14.7302 27.6994 14.7191 27.6874 14.7095L18.558 5.62627H18.5543L13.1416 0.239416L13.0978 0.195886C13.0955 0.193588 13.0932 0.190928 13.0908 0.188134C13.0855 0.182103 13.0798 0.175451 13.0723 0.170493C12.941 0.0652952 12.7732 0 12.5872 0H0.37933C0.171428 0 0 0.170493 0 0.377261C0 0.471576 0.0328266 0.555009 0.0875376 0.620304C0.0971508 0.632255 0.108348 0.642631 0.120084 0.653508C0.12616 0.659138 0.132381 0.664903 0.138601 0.671089L14.2504 14.7059C14.2624 14.7155 14.2728 14.7266 14.2838 14.7383C14.2894 14.7443 14.2952 14.7505 14.3015 14.7567C14.3525 14.822 14.3853 14.9054 14.3853 14.9961C14.3853 15.0868 14.3562 15.1702 14.3015 15.2392L14.2504 15.29L0.138601 29.3284C0.120364 29.3429 0.102127 29.3611 0.0875376 29.3792C0.0328266 29.4445 0 29.5279 0 29.6186C0 29.829 0.171428 29.9995 0.37933 29.9995H0.382977L12.5471 29.9959H12.62C12.817 29.9886 12.992 29.9052 13.1197 29.7782L13.1233 29.7746L18.558 24.3732L27.7421 15.2428ZM42.529 0.380895C42.529 0.471584 42.4961 0.555018 42.4414 0.623942C42.4318 0.635895 42.4206 0.646272 42.4089 0.657151C42.4028 0.66278 42.3966 0.668543 42.3904 0.674728L33.9319 9.08344C33.9223 9.09539 33.9111 9.10577 33.8993 9.11665C33.8933 9.12227 33.8871 9.12804 33.8808 9.13422C33.8152 9.18863 33.7313 9.21765 33.6401 9.21765C33.5489 9.21765 33.465 9.18501 33.3957 9.13422L24.8862 0.667473C24.8742 0.657917 24.8638 0.646787 24.8528 0.63512L24.8528 0.635096C24.8471 0.629055 24.8414 0.622871 24.8351 0.616687C24.7804 0.551391 24.7512 0.467956 24.7512 0.377267C24.7512 0.166868 24.919 0 25.1306 0H25.1342L42.1496 0.00362757C42.3575 0.00362757 42.529 0.170496 42.529 0.380895ZM42.529 29.6188C42.529 29.8292 42.3612 29.996 42.1496 29.996H42.146H25.1306C24.9227 29.996 24.7512 29.8255 24.7512 29.6188C24.7512 29.5281 24.7841 29.4446 24.8388 29.3757C24.8484 29.3638 24.8596 29.3534 24.8713 29.3425C24.8742 29.3399 24.877 29.3372 24.8799 29.3345C24.8832 29.3314 24.8865 29.3282 24.8898 29.3249L33.3447 20.9162C33.3543 20.9043 33.3655 20.8939 33.3772 20.883C33.3833 20.8774 33.3895 20.8716 33.3957 20.8654C33.4614 20.811 33.5453 20.782 33.6365 20.782C33.7276 20.782 33.8115 20.8146 33.8808 20.8654L33.9319 20.9162L42.3904 29.3285C42.4024 29.3381 42.4128 29.3492 42.4238 29.3609C42.4294 29.367 42.4352 29.3731 42.4414 29.3793C42.4961 29.4483 42.529 29.5281 42.529 29.6188Z" />
                 </svg>                           
@@ -71,9 +74,9 @@
 
                     </label>                
                 </a>     
-            </a>
-            
+            </a>            
         </article>   
+        
         <article class="popup-filter">
             <div id="popup1" class="overlay expandTop">
                 <div class="popup-menu">
@@ -81,37 +84,36 @@
                         <a class="close" href="#">
                             ×
                         </a>
-                <div class="content">           
-                    <div class="filters">
-                    
-                        <label class="filter" id="labelrubia">
-                            Rubia
-                            <input type="checkbox" id="cboxRubia" value="rubia_checkbox" class="checkbox"> 
-                        </label>
-                        
-                        <label class="filter" id="labelmorena">
-                            Morena
-                            <input type="checkbox" id="cboxMorena" value="morena_checkbox" class="checkbox"> 
-                        </label>
+                    <div class="content">           
+                        <div class="filters">                                                    
+                            <label class="filter" id="labelrubia">
+                                Rubia
+                                <input type="checkbox" id="cboxRubia" value="rubia_checkbox" class="checkbox"> 
+                            </label>
                             
-                        <label class="filter" id="labelRoja">
-                            Roja
-                            <input type="checkbox" id="cboxRoja" value="roja_checkbox" class="checkbox">  
-                        </label>              
+                            <label class="filter" id="labelmorena">
+                                Morena
+                                <input type="checkbox" id="cboxMorena" value="morena_checkbox" class="checkbox"> 
+                            </label>
+                                
+                            <label class="filter" id="labelRoja">
+                                Roja
+                                <input type="checkbox" id="cboxRoja" value="roja_checkbox" class="checkbox">  
+                            </label>              
+                        </div>
+            
+                        <div class="filter-buttons">
+                            <a id="clearFilters" class="disabled" > limpiar </a>
+                            <a href="#" class="filter-bottom-extend" id="runFilters" href="#">                      
+                                <p>filtrar</p>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.10882 4.83059C4.93001 4.60261 4.9764 4.27779 5.21243 4.10508C5.30561 4.0369 5.41931 4 5.53621 4H19.4638C19.7599 4 20 4.23186 20 4.51787C20 4.63077 19.9618 4.74059 19.8912 4.83059L13.8405 12.5448V18.4821C13.8405 18.5843 13.8091 18.6843 13.7504 18.7693C13.5861 19.0073 13.2533 19.0716 13.0069 18.913L11.3983 17.8772C11.2492 17.7812 11.1596 17.6195 11.1596 17.4463V12.5448L5.10882 4.83059Z" fill="white"/>
+                                </svg>
+                                <label class="filter-notificator" id="filterNotification" >                
+                                </label>       
+                            </a>
+                        </div>
                     </div>
-        
-                    <div class="filter-buttons">
-                        <a id="clearFilters" class="disabled" > limpiar </a>
-                        <a href="#" class="filter-bottom-extend" id="runFilters" href="#">                      
-                            <p>filtrar</p>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.10882 4.83059C4.93001 4.60261 4.9764 4.27779 5.21243 4.10508C5.30561 4.0369 5.41931 4 5.53621 4H19.4638C19.7599 4 20 4.23186 20 4.51787C20 4.63077 19.9618 4.74059 19.8912 4.83059L13.8405 12.5448V18.4821C13.8405 18.5843 13.8091 18.6843 13.7504 18.7693C13.5861 19.0073 13.2533 19.0716 13.0069 18.913L11.3983 17.8772C11.2492 17.7812 11.1596 17.6195 11.1596 17.4463V12.5448L5.10882 4.83059Z" fill="white"/>
-                            </svg>
-                            <label class="filter-notificator" id="filterNotification" >                
-                            </label>       
-                        </a>
-                    </div>
-                </div>
                 </div>
             </div>
         </article>

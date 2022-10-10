@@ -65,7 +65,6 @@ ul{
 }
 
 header {   
-
     background-color: $headerBackground; 
     padding: 1rem 0;
     nav{
@@ -75,8 +74,11 @@ header {
       align-items: center;
       width: 100%;
 
-      .logo {
+      .logo {       
         @extend .flexCenterall;
+        svg {
+          margin: 0 3px;
+        }
       }
       .shoppingCart{
         @extend .flexCenterall;
@@ -107,8 +109,7 @@ header {
           fill: #fff;
         }
       }
-      
-      
+
       .shoppingCart svg,
       .logo svg {
         display: inline;
@@ -136,11 +137,74 @@ header {
         margin: 0;
         padding: 0;
       }
+
+      .button {
+        display: inline-block;      
+        background-color: #0f0f0f; 
+        line-height: 50px;
+        text-align: center;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      
+        cursor: pointer;
+        transition: all 0.3s;
+        :hover {
+          transition-duration: 0.4s;
+          -moz-transition-duration: 0.4s;
+          -webkit-transition-duration: 0.4s;
+          -o-transition-duration: 0.4s;
+          background-color: white;
+          color: black;
+        }
+      
+      }
+      .search {
+        position: absolute;
+        left: 49px; /* Button width-1px (Not 50px/100% because that will sometimes show a 1px line between the search box and button) */
+        background-color: white;
+        outline: none;
+        border: none;
+        padding: 0;
+        width: 0;
+        height: 100%;
+        z-index: 10;
+        transition-duration: 0.4s;
+        -moz-transition-duration: 0.4s;
+        -webkit-transition-duration: 0.4s;
+        -o-transition-duration: 0.4s;
+      
+        &:focus {
+          width: 363px; /* Bar width+1px */
+          padding: 0 16px 0 0;
+        }
+      
+        &:focus + .searchbutton {
+          transition-duration: 0.4s;
+          -moz-transition-duration: 0.4s;
+          -webkit-transition-duration: 0.4s;
+          -o-transition-duration: 0.4s;
+          background-color: white;
+          color: black;
+        }
+      
+      }
+      
+      .expandright {
+        left: auto;
+        right: 40px; /* Button width-1px */
+         &:focus {
+          padding: 0 0 0 16px;
+        }
+      }
+      
     }
-
-
 }
-
 
 .flexCenterall{
   display: flex;
@@ -168,29 +232,28 @@ header {
   @extend .restFilterButton;
 }
 
-.overlay {
-  position: absolute;
-  top: -300px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);  
-  visibility: hidden;
-  opacity: 0;
- 
-  transition: 0.3s ease-out;
-  z-index: 3;
-
-  &:target{
-    visibility: visible;
-    opacity: 1;
-    top:0px;    
-    position: fixed;
+.popup-filter {
+  .overlay {
+    position: absolute;
+    top: -300px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);  
+    visibility: hidden;
+    opacity: 0;   
+    transition: 0.3s ease-out;
+    z-index: 3;
+  
+    &:target{
+      visibility: visible;
+      opacity: 1;
+      top:0px;    
+      position: fixed;
+    }
+  
   }
-
-}
-
-.popup-menu {
+  .popup-menu {
     margin: 70vh auto;
     background: #fff;
     border-radius: 5px;
@@ -203,7 +266,6 @@ header {
     -o-transition: all 1s;
     transition: all 1s;
 
- 
     h2 {
       margin: 15px;
       color: #333; 
@@ -229,20 +291,19 @@ header {
     .content {
       max-height: 80%;
       overflow: auto;
-    }
 
-    .filters{      
-       .filter{  
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-          padding: 9px;
-          border-top: 1px solid rgb(196, 196, 196);
-          cursor: pointer;
-       }
-    }
+      .filters{      
+        .filter{  
+           display: flex;
+           justify-content: space-between;
+           width: 100%;
+           padding: 9px;
+           border-top: 1px solid rgb(196, 196, 196);
+           cursor: pointer;
+        }
+     }
 
-    .filter-buttons{
+     .filter-buttons{
       display: flex;
       justify-content: space-between;
       background-color: #f4f4f4;
@@ -258,136 +319,62 @@ header {
         }
 
      }
-}
-
-.button {
-	display: inline-block;
-	margin: 4px 2px;
-	background-color: #0f0f0f;
-	font-size: 14px;
-	padding-left: 32px;
-	padding-right: 32px;
-	height: 50px;
-	line-height: 50px;
-	text-align: center;
-	color: white;
-	text-decoration: none;
-	cursor: pointer;
-	-moz-user-select: none;
-	-khtml-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-
-  cursor: pointer;
-  transition: all 0.3s;
-  :hover {
-    transition-duration: 0.4s;
-    -moz-transition-duration: 0.4s;
-    -webkit-transition-duration: 0.4s;
-    -o-transition-duration: 0.4s;
-    background-color: white;
-    color: black;
+     .expandTop {
+       top: 50px;
+     }    
+   }
   }
-
 }
 
-
-.products{
-  .title-category {
-    p{
+.products{  
+  .title-category {    
+    p {
       font-size: 2rem;
       padding: 3vw 0 2vw;
       text-align: center;
      }
   }
-}
-
-.search {
-	position: absolute;
-	left: 49px; /* Button width-1px (Not 50px/100% because that will sometimes show a 1px line between the search box and button) */
-	background-color: white;
-	outline: none;
-	border: none;
-	padding: 0;
-	width: 0;
-	height: 100%;
-	z-index: 10;
-	transition-duration: 0.4s;
-	-moz-transition-duration: 0.4s;
-	-webkit-transition-duration: 0.4s;
-	-o-transition-duration: 0.4s;
-
-  &:focus {
-    width: 363px; /* Bar width+1px */
-    padding: 0 16px 0 0;
-  }
-
-  &:focus + .searchbutton {
-    transition-duration: 0.4s;
-    -moz-transition-duration: 0.4s;
-    -webkit-transition-duration: 0.4s;
-    -o-transition-duration: 0.4s;
-    background-color: white;
-    color: black;
-  }
-
-}
-
-.expandright {
-	left: auto;
-	right: 40px; /* Button width-1px */
-   &:focus {
-    padding: 0 0 0 16px;
-  }
-}
-
-.expandTop {
-  top: 50px;
-}
-
-.products-container{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-
-
-  .product-card{    
-    @extend .flexCenterall;
-    border: 1px solid $lineGray;
-    margin: 5%;
-    flex-direction: column;
-    border-radius: 5px;
-    text-align: left;  
-
-    img {
-      width: 110px;
-      margin: 19%;
-    }
-    
-    p{     
-      font-size: 1em;
-      margin: 5%;
-      padding: 0 5%;
-      text-align: left;     
-      width: 100%;
-
-      &:nth-child(2n){
-        font-weight: 600;
-        font-size: 1.5em;        
-      }     
-    }
-
-    .agregar{
+  .products-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    .product-card{    
       @extend .flexCenterall;
-      width: 100%;
-      height: 57px;
-      background-color: $lineGray;
-      color: $filterButtonColor;
-      font-weight: bold;
+      border: 1px solid $lineGray;
+      margin: 5%;
+      flex-direction: column;
+      border-radius: 5px;
+      text-align: left;  
+  
+      img {
+        width: 110px;
+        margin: 19%;
+      }
+      
+      p{     
+        font-size: 1em;
+        margin: 5%;
+        padding: 0 5%;
+        text-align: left;     
+        width: 100%;
+  
+        &:nth-child(2n){
+          font-weight: 600;
+          font-size: 1.5em;        
+        }     
+      }
+  
+      .agregar{
+        @extend .flexCenterall;
+        width: 100%;
+        height: 57px;
+        background-color: $lineGray;
+        color: $filterButtonColor;
+        font-weight: bold;
+      }    
     }
-
   }
 }
+
 
 @media only screen and (min-width: 0px) and (max-width: 768px) {
 

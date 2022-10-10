@@ -29,6 +29,9 @@ header nav {
   align-items: center;
   width: 100%;
 }
+header nav .logo svg {
+  margin: 0 3px;
+}
 header nav .shoppingCart .search-container {
   position: relative;
   display: inline-block;
@@ -77,8 +80,65 @@ header nav .searchbutton {
   margin: 0;
   padding: 0;
 }
+header nav .button {
+  display: inline-block;
+  background-color: #0f0f0f;
+  line-height: 50px;
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+header nav .button :hover {
+  transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+}
+header nav .search {
+  position: absolute;
+  left: 49px; /* Button width-1px (Not 50px/100% because that will sometimes show a 1px line between the search box and button) */
+  background-color: white;
+  outline: none;
+  border: none;
+  padding: 0;
+  width: 0;
+  height: 100%;
+  z-index: 10;
+  transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+}
+header nav .search:focus {
+  width: 363px; /* Bar width+1px */
+  padding: 0 16px 0 0;
+}
+header nav .search:focus + .searchbutton {
+  transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  background-color: white;
+  color: black;
+}
+header nav .expandright {
+  left: auto;
+  right: 40px; /* Button width-1px */
+}
+header nav .expandright:focus {
+  padding: 0 0 0 16px;
+}
 
-.flexCenterall, .products-container .product-card .agregar, .products-container .product-card, header nav .logo, header nav .shoppingCart, header nav .shoppingCart .notification-badge {
+.flexCenterall, .products .products-container .product-card .agregar, .products .products-container .product-card, header nav .logo, header nav .shoppingCart, header nav .shoppingCart .notification-badge {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,7 +216,7 @@ header nav .searchbutton {
   text-align: center;
 }
 
-.overlay {
+.popup-filter .overlay {
   position: absolute;
   top: -300px;
   bottom: 0;
@@ -168,14 +228,13 @@ header nav .searchbutton {
   transition: 0.3s ease-out;
   z-index: 3;
 }
-.overlay:target {
+.popup-filter .overlay:target {
   visibility: visible;
   opacity: 1;
   top: 0px;
   position: fixed;
 }
-
-.popup-menu {
+.popup-filter .popup-menu {
   margin: 70vh auto;
   background: #fff;
   border-radius: 5px;
@@ -185,12 +244,12 @@ header nav .searchbutton {
   -mos-transition: all 1s;
   transition: all 1s;
 }
-.popup-menu h2 {
+.popup-filter .popup-menu h2 {
   margin: 15px;
   color: #333;
   font-weight: 700;
 }
-.popup-menu .close {
+.popup-filter .popup-menu .close {
   position: absolute;
   top: -21px;
   right: 30px;
@@ -205,11 +264,11 @@ header nav .searchbutton {
   text-align: center;
   border-radius: 3px;
 }
-.popup-menu .content {
+.popup-filter .popup-menu .content {
   max-height: 80%;
   overflow: auto;
 }
-.popup-menu .filters .filter {
+.popup-filter .popup-menu .content .filters .filter {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -217,13 +276,13 @@ header nav .searchbutton {
   border-top: 1px solid rgb(196, 196, 196);
   cursor: pointer;
 }
-.popup-menu .filter-buttons {
+.popup-filter .popup-menu .content .filter-buttons {
   display: flex;
   justify-content: space-between;
   background-color: #f4f4f4;
   width: 100%;
 }
-.popup-menu .filter-buttons a {
+.popup-filter .popup-menu .content .filter-buttons a {
   position: relative;
   top: 0;
   width: 100%;
@@ -240,21 +299,21 @@ header nav .searchbutton {
   color: #000;
   cursor: pointer;
 }
-.popup-menu .filter-buttons a p {
+.popup-filter .popup-menu .content .filter-buttons a p {
   font-size: 1em;
   color: white;
 }
-.popup-menu .filter-buttons a svg {
+.popup-filter .popup-menu .content .filter-buttons a svg {
   fill: #fff;
 }
-.popup-menu .filter-buttons a .filter-notificator {
+.popup-filter .popup-menu .content .filter-buttons a .filter-notificator {
   background-color: white;
   border-radius: 16px;
   width: 39px;
   color: #000;
   text-align: center;
 }
-.popup-menu .filter-buttons a:nth-child(2) {
+.popup-filter .popup-menu .content .filter-buttons a:nth-child(2) {
   position: relative;
   top: 0;
   width: 100%;
@@ -268,48 +327,22 @@ header nav .searchbutton {
   padding: 8px;
   text-transform: uppercase;
 }
-.popup-menu .filter-buttons a:nth-child(2) p {
+.popup-filter .popup-menu .content .filter-buttons a:nth-child(2) p {
   font-size: 1em;
   color: white;
 }
-.popup-menu .filter-buttons a:nth-child(2) svg {
+.popup-filter .popup-menu .content .filter-buttons a:nth-child(2) svg {
   fill: #fff;
 }
-.popup-menu .filter-buttons a:nth-child(2) .filter-notificator {
+.popup-filter .popup-menu .content .filter-buttons a:nth-child(2) .filter-notificator {
   background-color: white;
   border-radius: 16px;
   width: 39px;
   color: #000;
   text-align: center;
 }
-
-.button {
-  display: inline-block;
-  margin: 4px 2px;
-  background-color: #0f0f0f;
-  font-size: 14px;
-  padding-left: 32px;
-  padding-right: 32px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  color: white;
-  text-decoration: none;
-  cursor: pointer;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.button :hover {
-  transition-duration: 0.4s;
-  -moz-transition-duration: 0.4s;
-  -webkit-transition-duration: 0.4s;
-  -o-transition-duration: 0.4s;
-  background-color: white;
-  color: black;
+.popup-filter .popup-menu .content .expandTop {
+  top: 50px;
 }
 
 .products .title-category p {
@@ -317,74 +350,33 @@ header nav .searchbutton {
   padding: 3vw 0 2vw;
   text-align: center;
 }
-
-.search {
-  position: absolute;
-  left: 49px; /* Button width-1px (Not 50px/100% because that will sometimes show a 1px line between the search box and button) */
-  background-color: white;
-  outline: none;
-  border: none;
-  padding: 0;
-  width: 0;
-  height: 100%;
-  z-index: 10;
-  transition-duration: 0.4s;
-  -moz-transition-duration: 0.4s;
-  -webkit-transition-duration: 0.4s;
-  -o-transition-duration: 0.4s;
-}
-.search:focus {
-  width: 363px; /* Bar width+1px */
-  padding: 0 16px 0 0;
-}
-.search:focus + .searchbutton {
-  transition-duration: 0.4s;
-  -moz-transition-duration: 0.4s;
-  -webkit-transition-duration: 0.4s;
-  -o-transition-duration: 0.4s;
-  background-color: white;
-  color: black;
-}
-
-.expandright {
-  left: auto;
-  right: 40px; /* Button width-1px */
-}
-.expandright:focus {
-  padding: 0 0 0 16px;
-}
-
-.expandTop {
-  top: 50px;
-}
-
-.products-container {
+.products .products-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
-.products-container .product-card {
+.products .products-container .product-card {
   border: 1px solid #f4f4f4;
   margin: 5%;
   flex-direction: column;
   border-radius: 5px;
   text-align: left;
 }
-.products-container .product-card img {
+.products .products-container .product-card img {
   width: 110px;
   margin: 19%;
 }
-.products-container .product-card p {
+.products .products-container .product-card p {
   font-size: 1em;
   margin: 5%;
   padding: 0 5%;
   text-align: left;
   width: 100%;
 }
-.products-container .product-card p:nth-child(2n) {
+.products .products-container .product-card p:nth-child(2n) {
   font-weight: 600;
   font-size: 1.5em;
 }
-.products-container .product-card .agregar {
+.products .products-container .product-card .agregar {
   width: 100%;
   height: 57px;
   background-color: #f4f4f4;
