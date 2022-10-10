@@ -26,10 +26,6 @@ window.onload = () => {
   loadProductsdata();
 };
 
-let setfilterByDefault = ( filterDefault )=>{
-    localStorage.setItem = filterDefault;
-}
-
 let loadProductsdata = () => {
   fetch("./assets/products.json")
     .then((res) => {

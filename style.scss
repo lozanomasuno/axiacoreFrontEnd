@@ -52,7 +52,6 @@ $lineGray          :  #f4f4f4;
 }
 
 body{
-  @extend .flexCenterall;
   font-family: 'Poppins', sans-serif;
   flex-direction: column;   
 }
@@ -65,63 +64,89 @@ ul{
     list-style: none;
 }
 
-header {
-    display: flex;
-    background-color: $headerBackground ;
-    justify-content: space-around;
+header {   
+
+    background-color: $headerBackground; 
     padding: 1rem 0;
-    align-items: center;
-    width: 100%;
+    nav{
+      display: flex;
+      justify-content: space-between;
+       margin: 0;
+      align-items: center;
+      width: 100%;
+
+      .logo {
+        @extend .flexCenterall;
+      }
+      .shoppingCart{
+        @extend .flexCenterall;
+      
+        .search-container {
+          position: relative;
+          display: inline-block;
+          margin: 1px 1px;
+          height: 48px;
+          width: 48px;
+          vertical-align: bottom;
+        }
+      
+        .notification-badge{  
+          @extend .flexCenterall;
+          position: absolute;
+          background-color: $filterButtonColor;
+          border-radius: 50%;
+          width: 15px;
+          height: 15px;
+          font-size: 11px;
+          color: #fff;
+          top: 7px;
+          right: 10px;
+        }
+        .searchbar svg{
+          display: inline;
+          fill: #fff;
+        }
+      }
+      
+      
+      .shoppingCart svg,
+      .logo svg {
+        display: inline;
+        fill: #fff;
+      }
+      .headerlogo {
+          color: #eeee;
+          font-weight: 600;
+      }
+
+      .mglass {
+        display: inline-block;
+        pointer-events: none;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+      }
+      
+      .searchbutton {
+        position: absolute;
+        font-size: 22px;
+        width: 100%;
+        height: 99%;
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+
 }
+
+
 .flexCenterall{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.logo {
-  @extend .flexCenterall;
-}
-.shoppingCart{
-  @extend .flexCenterall;
-
-  .search-container {
-    position: relative;
-    display: inline-block;
-    margin: 1px 1px;
-    height: 48px;
-    width: 48px;
-    vertical-align: bottom;
-  }
-
-  .notification-badge{  
-    @extend .flexCenterall;
-    position: absolute;
-    background-color: $filterButtonColor;
-    border-radius: 50%;
-    width: 15px;
-    height: 15px;
-    font-size: 11px;
-    color: #fff;
-    top: 21px;
-    right: 444px;
-  }
-  .searchbar svg{
-    display: inline;
-    fill: #fff;
-  }
-}
-
-
-.shoppingCart svg,
-.logo svg {
-  display: inline;
-  fill: #fff;
-}
-.headerlogo {
-    color: #eeee;
-    font-weight: 600;
-}
-
 .disabled{
   color: $lineGray !important;
 }
@@ -139,6 +164,7 @@ header {
 }
 .filter-bottom{
   @include filterButton(fixed,90vh,30%, 40px, $filterButtonColor, 5px, 8px);
+  left: 35%;
   @extend .restFilterButton;
 }
 
@@ -266,31 +292,16 @@ header {
 
 }
 
-.mglass {
-	display: inline-block;
-	pointer-events: none;
-	-webkit-transform: rotate(-45deg);
-	-moz-transform: rotate(-45deg);
-	-o-transform: rotate(-45deg);
-	-ms-transform: rotate(-45deg);
-}
 
-.searchbutton {
-	position: absolute;
-	font-size: 22px;
-	width: 100%;
-  height: 99%;
-	margin: 0;
-	padding: 0;
+.products{
+  .title-category {
+    p{
+      font-size: 2rem;
+      padding: 3vw 0 2vw;
+      text-align: center;
+     }
+  }
 }
-
-.title-category {
-  p{
-    font-size: 2rem;
-    padding: 3vw 0 2vw;
-   }
-}
-
 
 .search {
 	position: absolute;
@@ -383,7 +394,10 @@ header {
   .shoppingCart{
    
     .notification-badge{  
-      @extend .flexCenterall;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
       position: absolute;   
       top: 9px;
       right: 20px;
@@ -413,10 +427,9 @@ header {
   
     }
   }  
-  header {
-      height: 48px;
+  header {      
       justify-content: space-between;
-      padding: 0 28px;
+      padding: 0 14px;
   }
   .logo {
     a{
